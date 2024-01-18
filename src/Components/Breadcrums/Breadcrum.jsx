@@ -4,11 +4,20 @@ import arrow_icon from '../Assets/breadcrum_arrow.png'
 
 
 const Breadcrum = (props) => {
+
+  if (!props || !props.product || !props.product.category) {
+    console.error("Category prop is not defined:", props);
+    return <div>Error: Category not defined</div>;
+  }
+
+
     const {product} = props;
 
   return (
     <div className='breadcrum'>
-       HOME <img src={arrow_icon} alt="" /> SHOP <img src={arrow_icon} alt="" /> {product.category} <img src={arrow_icon} alt="" /> {product.name}
+       HOME <img src={arrow_icon} alt="" /> SHOP 
+       <img src={arrow_icon} alt="" /> 
+       {product.category} <img src={arrow_icon} alt=""/>{product.name}
     </div>
   )
 }
